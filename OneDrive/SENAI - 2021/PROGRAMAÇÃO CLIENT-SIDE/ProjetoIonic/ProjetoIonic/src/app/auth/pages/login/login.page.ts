@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+
+  /*FormControl*/
+ /*  */
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  authForm: FormGroup;
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.createForm();
   }
+private createForm(): void{
+  this.authForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.maxLength(6)]],
+  });
+}
+get email(): FormControl {
+  return this.authForm.get('email') as FormControl;
+}
 
+get password(): FormControl {
+  return this.authForm.get('password') as FormControl;
+}
+
+// eslint-disable-next-line @typescript-eslint/member-ordering
+onSubmit(): void {
+  console.log('AutoForm: ', this.authForm.value);
+}
 }
