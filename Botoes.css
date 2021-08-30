@@ -1,0 +1,16 @@
+.Botoes {
+    background: yellow;
+}
+
+.Botoes span {
+    font-size: 20px;
+    color: tomato;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.Botoes button {
+    font-size: 15px;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    background: yellowgreen;
+}
